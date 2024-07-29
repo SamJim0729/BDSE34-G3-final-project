@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>購屋推薦 首頁</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="{{ url_for('static', filename='css/Bootstrap_Icons.css') }}" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="{{ url_for('static', filename='css/Google_fonts_1.css') }}" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='css/Google_fonts_2.css') }}" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="{{ url_for('static', filename='css/SimpleLightbox_plugin_CSS.css') }}" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <!-- member CSS -->
+        <link href="{{ url_for('static', filename='css/member.css') }}" rel="stylesheet" />
+        <!-- chat bot CSS -->
+        <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet" />
+    </head>
+
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/">BDSE 34 - 3</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="home">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="map">標的查詢</a></li>
+                        <li class="nav-item"><a class="nav-link" href="trend">趨勢分析</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="contact">聯絡我們</a></li>
+                        <li class="nav-item"><a class="nav-link" href="signin">登入</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">雙北購屋 不得House?</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5"></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Option-->
+        <!-- <section class="page-section" id="option">
+            <div class="container-fluid px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="static/assets/img/portfolio/fullsize/1.jpg" title="Project Name">
+                            <img class="img-fluid" src="static/assets/img/portfolio/thumbnails/1.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">標的查詢</div>
+                                <div class="project-category text-white-50">Category</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="static/assets/img/portfolio/fullsize/2.jpg" title="Project Name">
+                            <img class="img-fluid" src="static/assets/img/portfolio/thumbnails/2.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">趨勢分析</div>
+                                <div class="project-category text-white-50">Category</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="static/assets/img/portfolio/fullsize/3.jpg" title="Project Name">
+                            <img class="img-fluid" src="static/assets/img/portfolio/thumbnails/3.jpg" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-name">聯絡我們</div>
+                                <div class="project-category text-white-50">Category</div>
+                            </div>
+                        </a>
+                    </div> -->
+                    <!-- <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Sturdy Themes</h3>
+                            <p class="text-muted mb-0">Ocontainer-fluid</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Up to Date</h3>
+                            <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Ready to Publish</h3>
+                            <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Made with Love</h3>
+                            <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
+                        </div>
+                    </div> -->
+                <!-- </div>
+            </div>
+        </section> -->
+        <!-- Member-->
+        <!-- <section class="page-section bg-primary" id="member">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">金牌銷售員</h2>
+                        <hr class="divider divider-light" />
+                            <div id="member-info"> -->
+                                <!-- 組員資訊寫在 JS檔 內 -->
+                            <!-- </div> -->
+                            <!-- 圓點按鈕 -->
+                            <!-- <div class="carousel-dots">
+                                <span class="dot" data-index="0"></span>
+                                <span class="dot" data-index="1"></span>
+                                <span class="dot" data-index="2"></span>
+                                <span class="dot" data-index="3"></span>
+                                <span class="dot" data-index="4"></span>
+                                <span class="dot" data-index="5"></span>
+                                <span class="dot" data-index="6"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Call to action-->
+        <!-- <section class="page-section bg-dark text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
+                <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Download Now!</a>
+            </div>
+        </section> -->
+        
+        <!-- 聊天機器人按鈕和對話框 -->
+        <section class="chatbot">
+            <div class="container">
+                <!-- AI小幫手 顯示對話框的按鈕 -->
+                <button id="dialogButton" class="floating-button" onclick="openDialog()">
+                    <img src="static/assets/img/LLM.png" alt="LLM Image" id="dialogImage">
+                </button>
+
+                <!-- 小幫手對話框 -->
+                <div id="dialogBox" class="hidden">
+                    <!-- 對話框頂部區塊 -->
+                    <div id="dialogHeader" class="top">
+                        <!-- 對話框的 logo 和 標題 -->
+                        <div id="dialogTitle">
+                            <img src="static/assets/img/ailogo.png" alt="AI Logo" id="ailogo" style="width: 30px; height: 30px; margin-right: 10px;">
+                            <span>房屋智選AI助理</span>
+                        </div>
+
+                        <!-- 減號 (隱藏對話框) -->
+                        <button id="hideButton" onclick="hideDialog()">
+                            <img src="static/assets/img/hide.png" alt="隱藏對話" id="hideImage" style="width: 20px; height: 20px;">
+                        </button>
+
+                        <!-- 叉叉 (關閉對話框) -->
+                        <button id="closeButton" onclick="closeDialog()">
+                            <img src="static/assets/img/X.png" alt="關閉對話" id="closeImage" style="width: 20px; height: 20px;">
+                        </button>
+                    </div>
+                    
+                    <!-- 對話顯示區 -->
+                    <div id="chatArea">
+                        <!-- 對話訊息 -->
+                        <div id="chatMessages"></div>
+                    </div>
+
+                    <!-- 讀取動畫 -->
+                    <div id="loadingIndicator">
+                        <img src="static/assets/img/load.svg" alt="Loading..." id="loadingImage" class="hidden">
+                    </div>
+                    
+                    <!-- 輸入欄 + 發送鍵 -->
+                    <div id="formContainer">
+                        <form id="chatForm" onsubmit="return false;">
+                            <label for="question"></label><br>
+                            <div id="inputArea">
+                                <input type="text" id="question" name="question" oninput="adjustInputSize(this)" maxlength="100"><br><br>
+                                <button id="inputbutton" onclick="sendQuestion()">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-->
+        <!-- <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
+        </footer> -->
+
+        <!-- Bootstrap core JS-->
+        <script src="static/js/Bootstrap_core_JS.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="static/js/SimpleLightbox_plugin_JS.js"></script>
+        <!-- Core theme JS-->
+        <script src="static/js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="static/js/Core_theme_JS.js"></script>
+        <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+        <!-- member JS -->
+        <script src="static/js/member.js"></script>
+        <!-- chat bot JS -->
+        <script src="static/js/chatbot.js"></script>
+    </body>
+</html>

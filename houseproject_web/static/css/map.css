@@ -1,0 +1,453 @@
+table, thead, th, tbody, tr, td {
+    border: 1px solid;
+    justify-content: center;
+    align-items: center;
+    align-content: horizontal;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    display: none;
+}
+
+th {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.st1 {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-bottom: 3px dashed #f4623a;
+    width: 450px;
+}
+
+/* 中心化地圖和按鈕 */
+.masthead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* leafmap地圖 */
+#map {
+    margin-top: 50px;
+    height: 600px;
+    width: 1500px;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 900;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#map-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    z-index: 900;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#map-controls .horizontal-text,
+#map-controls .t1 {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#map-controls select {
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+#map-controls button {
+    margin: 0 10px;
+    background-color: #20b2aa;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#map-controls button:hover {
+    background-color: #f4623a;
+}
+
+.map-and-table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+#map-controls {
+    margin-top: 20px;
+}
+
+table {
+    margin: 0 auto;
+}
+
+#btn_request {
+    top: 20px;
+    left: 20px;
+    background-color: #555;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+    
+.top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 3px;
+    background-color: rgb(255, 20, 147, 0.2);
+    color: black;
+    padding: 10px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#Home, #searchButton {
+    margin-bottom: 10px;
+}
+
+.sub button,
+.sub input[type="reset"] {
+    width: 100px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sub button:hover,
+.sub input[type="reset"]:hover {
+    background-color: #e0e0e0;
+}
+
+.t1 {
+    width: 50px;
+    float: left;
+}
+    
+.horizontal-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: auto;
+}
+
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    align-items: center;
+}
+
+.slider {
+    width: 100%;
+}
+
+.label-container label {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* 修改範圍選擇器的外觀 */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #20b2aa;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #20b2aa;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* 統一popup樣式 */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.range-values {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.slider-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.slider-buttons button {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.slider-buttons button:hover {
+    background-color: #f4623a;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+#type-popup h2 {
+    text-align: center;
+    width: 100%;
+}
+
+/* 建物型態選項 */
+.type-options {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    text-align: center; /* 新增 */
+}
+
+.type-options li {
+    display: inline-block; /* 修改 */
+    margin-bottom: 10px;
+}
+
+.type-options label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.type-options input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* 修改總價格選取器的外觀 */
+.slider-container-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.slider-range-price {
+    position: absolute;
+    height: 100%;
+    background: #20b2aa;
+    border-radius: 5px;
+}
+
+.slider-buttons-price {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.type-slider-buttons button {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.slider-buttons-price button {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.slider-buttons-price button:hover {
+    background-color: #f4623a;
+}
+
+.range-values-price {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#price-popup .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    /* margin-top: 20px; */
+}
+
+#price-popup .slider:hover {
+    opacity: 1;
+}
+
+#price-popup .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #20b2aa;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#price-popup .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #20b2aa;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* 建物型態 */
+/* 通用按鈕樣式 */
+.button {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #f4623a;
+}
+
+/* 修改彈出窗口內部樣式 */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* 增加元素間距 */
+}
+
+/* 調整建物型態選項 */
+.type-options {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.type-options li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.type-options label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.type-options input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* 調整彈出窗口按鈕樣式 */
+.type-slider-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

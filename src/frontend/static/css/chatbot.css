@@ -1,0 +1,265 @@
+/* 設定 chat bot 的浮動按鈕 */
+.floating-button {
+    position: fixed; /* 固定在視窗上，即使滾動頁面也不會移動 */
+    bottom: 50px; /* 距離視窗底部50像素 */
+    right: 50px; /* 距離視窗右側50像素 */
+    background-color: transparent;  /* 背景顏色為透明 */
+    border: none; /* 去除按鈕邊框 */
+    border-radius: 50%; /* 使按鈕成為圓形 */
+    width: 72px; /* 按鈕寬度 */
+    height: 72px; /* 按鈕高度 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 添加陰影效果 */
+    cursor: pointer; /* 滑鼠移到按鈕上時顯示手型指標 */
+    z-index: 1000; /* 設定z-index確保按鈕在最上層 */
+    overflow: hidden; /* 隱藏超出部分 */
+}
+
+/* 設定按鈕內的圖片 */
+.floating-button img {
+    width: 100%; /* 圖片寬度填滿按鈕 */
+    height: 100%; /* 圖片高度填滿按鈕 */
+    border-radius: 50%; /* 使圖片圓形 */
+    object-fit: cover; /* 保持圖片比例，並填滿容器 */
+}
+
+/* 對話框的標題 */
+.top {
+    font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    color: #515353;
+}
+
+/* 對話訊息的樣式 */
+.message {
+    font-size: 14px;
+    color: #333;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* 使用者訊息的樣式 */
+.user-message {
+    align-self: flex-end; /* 右對齊 */
+    text-align: left; /* 文字右對齊 */
+    background-color: #e0f7fa; /* 背景色 */
+    border: 1px solid #00796b; /* 邊框顏色 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 10px; /* 內邊距 */
+    margin: 10px 0; /* 上下外邊距 */
+    max-width: 80%;
+    word-wrap: break-word; /* 長字串自動換行 */
+    font-size: 14px; /* 字體大小 */
+    line-height: 1.5; /* 行高 */
+}
+
+/* 機器人訊息的樣式 */
+.bot-message {
+    align-self: flex-start; /* 左對齊 */
+    text-align: left; /* 文字左對齊 */
+    background-color: #fff9c4; /* 背景色 */
+    border: 1px solid #fbc02d; /* 邊框顏色 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 10px; /* 內邊距 */
+    margin: 10px 0; /* 上下外邊距 */
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 14px; /* 字體大小 */
+    line-height: 1.5; /* 行高 */
+}
+
+.bot-message p {
+    margin: 0;
+    padding: 0;
+}
+
+.bot-message .item-block {
+    margin-bottom: 0px; /* 每個項目塊之間的間隔 */
+}
+
+/* 隱藏元素 */
+.hidden {
+    display: none;
+}
+
+/* 設定對話框的外框樣式 */
+#dialogBox {
+    position: fixed; /* 固定在視窗上 */
+    bottom: 130px; /* 距離視窗底部90像素，避免與按鈕重疊 40*/
+    right: 60px; /* 距離視窗右側20像素 40*/
+    width: 500px; /* 對話框寬度 */
+    max-height: 700px; /* 對話框最大高度 */
+    height: 70vh; /* 使用相對視窗高度 */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 添加陰影效果 */
+    border-radius: 15px; /* 圓角邊框 */
+    z-index: 999; /* 設定z-index確保對話框在按鈕之下 */
+    overflow: hidden; /* 隱藏超出部分的內容 */
+    display: none; /* 預設隱藏對話框 */
+}
+
+/* 對話框標題 */
+#dialogTitle {
+    display: flex;
+    align-items: center;
+}
+
+/* 對話框logo */
+#dialogTitle img {
+    margin-right: 10px;
+}
+
+/* 隱藏對話框按鈕 */
+#hideButton {
+    position: absolute; /* 絕對定位 */
+    top: 10px; /* 距離對話框頂部10像素 */
+    right: 50px; /* 距離對話框右側10像素 */
+    background: none; /* 背景設為無 */
+    border: none; /* 去除邊框 */
+    cursor: pointer; /* 滑鼠移到按鈕上時顯示手型指標 */
+    z-index: 1001; /* 設定z-index確保隱藏按鈕在對話框最上層 */
+}
+
+/* 關閉對話框按鈕 */
+#closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* 對話框頂部的容器樣式 */
+#dialogHeader {
+    background-color: #f1f1f1; /* 背景顏色 */
+    padding: 10px; /* 內邊距 */
+    border-bottom: 1px solid #ddd; /* 頂部邊框 */
+    display: flex; /* 彈性盒模型 */
+    justify-content: space-between; /* 子元素之間的間隔 */
+    align-items: center; /* 垂直方向居中 */
+    height: 50px; /* 固定高度 */
+}
+
+/* 對話區域的容器樣式 */
+#chatArea {
+    padding: 10px; /* 內邊距 */
+    padding-bottom: 60px; /* 增加內邊距，避免被輸入區覆蓋 */
+    border-bottom: 1px solid #ddd; /* 底部邊框 */
+    max-height: 80%; /* 最大高度 */
+    min-height: 500px; /* 最小高度 */
+    overflow-y: auto; /* 垂直方向自動滾動 */
+    background-color: #f9f9f9; /* 背景色 */
+}
+
+/* 等待回覆的讀取動畫樣式 */
+#loadingIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 90px;
+    left: 0;
+    width: 100%;
+    height: 50px; /* 高度設定為50像素，確保顯示在底部 */
+}
+
+#loadingImage {
+    width: 50px;
+    height: 50px;
+}
+
+/* 確保 #chatMessages 容器使用彈性盒模型佈局，並將訊息按列顯示 */
+#chatMessages {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 回覆區域的容器樣式 */
+#Reply {
+    padding: 10px; /* 內邊距 */
+}
+
+/* 輸入欄和發送按鈕的容器樣式 */
+#formContainer {
+    position: absolute; /* 絕對定位 */
+    padding: 10px; /* 內邊距 */
+    border-top: 1px solid #ddd; /* 頂部邊框 */
+    background-color: #f1f1f1; /* 背景色 */
+    bottom: 0;
+    width: 100%;
+}
+
+/* 輸入區域的樣式 */
+#inputArea {
+    display: flex; /* 彈性盒模型 */
+    align-items: center; /* 垂直方向居中對齊 */
+}
+
+/* 輸入框的樣式 */
+#question {
+    flex: 1; /* 佔據剩餘空間 */
+    padding: 10px; /* 內邊距 */
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 4px; /* 圓角 */
+    margin-right: 10px; /* 右外邊距 */
+    font-size: 14px; /* 字體大小 */
+}
+
+/* 發送按鈕的樣式 */
+#inputbutton {
+    padding: 10px 15px; /* 內邊距 */
+    border: none; /* 無邊框 */
+    background-color: #0EAFA2; /* 背景色 */
+    color: white; /* 字體顏色 */
+    border-radius: 4px; /* 圓角 */
+    cursor: pointer; /* 指針樣式 */
+}
+
+/* 發送按鈕的懸停效果 */
+#inputbutton:hover {
+    background-color: #f4623a; /* 背景色（懸停時） */
+}
+
+/* 行動裝置(平板 1366*768)上的樣式 */
+@media (max-width: 768px) {
+    .floating-button {
+        bottom: 20px; /* 距離視窗底部20像素 */
+        right: 20px; /* 距離視窗右側20像素 */
+    }
+
+    #dialogBox {
+        width: 90%; /* 減少寬度 */
+        bottom: 90px;
+        right: 5%;
+        left: 5%;
+    }
+}
+
+/* 行動裝置(手機 360*640)上的樣式 */
+@media (max-width: 360px) {
+    .floating-button {
+        bottom: 10px; /* 距離視窗底部10像素 */
+        right: 10px; /* 距離視窗右側10像素 */
+    }
+
+    #dialogBox {
+        width: 90%;
+        bottom: 90px;
+        right: 5%;
+        left: 5%;
+        height: 70vh;
+        overflow: hidden; /* 隱藏超出部分的內容 */
+    }
+
+    #chatArea {
+        padding-bottom: 220px; /* 增加內邊距，避免被輸入區覆蓋 */
+        max-height: calc(100% - 70px); /* 減去輸入區的高度 */
+        overflow-y: scroll; /* 確保垂直方向可以滾動 */
+    }
+
+    #formContainer {
+        height: 90px; /* 固定高度 */
+    }
+}

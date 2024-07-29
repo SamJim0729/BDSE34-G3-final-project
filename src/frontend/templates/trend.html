@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>趨勢分析</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+        <!-- Bootstrap Icons-->
+        <link href="{{ url_for('static', filename='css/Bootstrap_Icons.css') }}" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="{{ url_for('static', filename='css/Google_fonts_1.css') }}" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='css/Google_fonts_2.css') }}" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="{{ url_for('static', filename='css/SimpleLightbox_plugin_CSS.css') }}" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <!-- chat bot CSS -->
+        <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet" />
+        <!-- 趨勢分析 CSS -->
+         <style>
+            .small-chart {
+                margin: 0 auto; /* 置中 */
+                border-radius: 30px; /* 圓角邊框 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+                overflow: hidden; /* 確保內容不會超出邊框 */
+            }
+         </style>
+    </head>
+
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/">BDSE 34 - 3</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="home">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="map">標的查詢</a></li>
+                        <li class="nav-item"><a class="nav-link" href="trend">趨勢分析</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="contact">聯絡我們</a></li>
+                        <li class="nav-item"><a class="nav-link" href="signin">登入</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <!-- 存放 Tableau 的區塊 -->
+            <div class="embedded-container">
+                <div class='tableauPlaceholder small-chart' id='viz1720796171345' style='position: relative'>
+                    <noscript><a href='#'><img alt='雙北房市儀錶板 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ED&#47;EDA_17207886723380&#47;1&#47;1_rss.png' style='border: none' /></a></noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value=''/>
+                        <param name='name' value='EDA_17207886723380&#47;1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ED&#47;EDA_17207886723380&#47;1&#47;1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='zh-TW' />
+                    </object>
+                </div>
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1720796171345');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    vizElement.style.width='100%';
+                    vizElement.style.height='833px';
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+            </div>
+        </header>
+
+        <!-- 聊天機器人按鈕和對話框 -->
+        <section class="chatbot">
+            <div class="container">
+                <!-- AI小幫手 顯示對話框的按鈕 -->
+                <button id="dialogButton" class="floating-button" onclick="openDialog()">
+                    <img src="static/assets/img/LLM.png" alt="LLM Image" id="dialogImage">
+                </button>
+                <!-- 小幫手對話框 -->
+                <div id="dialogBox" class="hidden">
+                    <!-- 對話框頂部區塊 -->
+                    <div id="dialogHeader">
+                        <!-- 對話框的 logo 和 標題 -->
+                        <div id="dialogTitle">
+                            <img src="static/assets/img/ailogo.png" alt="AI Logo" id="ailogo" style="width: 30px; height: 30px; margin-right: 10px;">
+                            <span>房屋智選AI助理</span>
+                        </div>
+                        <!-- 減號 (隱藏對話框) -->
+                        <button id="hideButton" onclick="hideDialog()">
+                            <img src="static/assets/img/hide.png" alt="隱藏對話" id="hideImage" style="width: 20px; height: 20px;">
+                        </button>
+                        <!-- 叉叉 (關閉對話框) -->
+                        <button id="closeButton" onclick="closeDialog()">
+                            <img src="static/assets/img/X.png" alt="關閉對話" id="closeImage" style="width: 20px; height: 20px;">
+                        </button>
+                    </div>
+                    <!-- 對話顯示區 -->
+                    <div id="chatArea">
+                        <!-- 對話訊息 -->
+                        <div id="chatMessages"></div>
+                    </div>
+                    <!-- 讀取動畫 -->
+                    <div id="loadingIndicator">
+                        <img src="static/assets/img/load.svg" alt="Loading..." id="loadingImage" class="hidden">
+                    </div>
+                    <!-- 輸入欄 + 發送鍵 -->
+                    <div id="formContainer">
+                        <form id="chatForm" onsubmit="return false;">
+                            <label for="question"></label><br>
+                            <div id="inputArea">
+                                <input type="text" id="question" name="question" oninput="adjustInputSize(this)" maxlength="100"><br><br>
+                                <button id="inputbutton" onclick="sendQuestion()">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <!-- <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
+        </footer> -->
+
+        <!-- Bootstrap core JS-->
+        <script src="static/js/Bootstrap_core_JS.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="static/js/SimpleLightbox_plugin_JS.js"></script>
+        <!-- Core theme JS-->
+        <script src="static/js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="js/Core_theme_JS.js"></script>
+        <!-- chat bot JS -->
+        <script src="static/js/chatbot.js"></script>
+    </body>
+</html>
